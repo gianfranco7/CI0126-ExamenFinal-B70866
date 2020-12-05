@@ -23,5 +23,8 @@ namespace CI0126_ExamenFinal_B70866.Models
         [Required(ErrorMessage = "Es necesario que escriba el descuento aplicable al producto")]
         [Display(Name = "Ingrese el descuento aplicable al producto")]
         double discount { get; set; }
+        [Required(ErrorMessage = "Es necesario que añada una imagen al producto")]
+        [Display(Name = "Ingrese una imagen para el producto")]
+        public HttpPostedFileBase image { get; set; }
     }
 }

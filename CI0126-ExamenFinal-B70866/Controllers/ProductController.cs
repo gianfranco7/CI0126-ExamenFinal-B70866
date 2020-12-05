@@ -20,6 +20,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         [HttpPost]
         public ActionResult addProduct(Product product)
         {
+            
             return View();
         }
     }
