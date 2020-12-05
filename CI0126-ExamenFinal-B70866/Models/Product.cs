@@ -27,5 +27,6 @@ namespace CI0126_ExamenFinal_B70866.Models
         [Required(ErrorMessage = "Es necesario que añada una imagen al producto")]
         [Display(Name = "Ingrese una imagen para el producto")]
         public HttpPostedFileBase image { get; set; }
+        public string fileType { get; set; }
     }
 }
