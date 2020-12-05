@@ -8,6 +8,7 @@ namespace CI0126_ExamenFinal_B70866.Models
 {
     public class Product
     {
+        int id { get; set; }
         [Required(ErrorMessage = "Es necesario que escriba el nombre del producto")]
         [Display(Name = "Ingrese el nombre del producto")]
         string name { get; set; }
