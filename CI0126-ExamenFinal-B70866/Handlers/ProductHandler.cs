@@ -78,6 +78,12 @@ namespace CI0126_ExamenFinal_B70866.Handlers
             return product.discount;
         }
 
+        public string getProductName(int id) 
+        {
+            Product product = db.Query("Product").Select("productName as name").Where("productID", id).FirstOrDefault<Product>();
+            return product.name;
+        }
+
         public void addProductToCart(Product product)
         {
             try
