@@ -10,13 +10,28 @@
     <title>@ViewBag.Title - Mercadito Feliz</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+<style>
+    .bg-green {
+        background-color: #dbffc9;
+    }
+</style>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        @Html.ActionLink("Mercadito Feliz", "Index", "Home", new { area = "" })
-        @Html.ActionLink("Añadir Producto", "addProduct", "Product", new { area = "" }, new { @class = "nav-link black-text" })
-        @Html.ActionLink("Ver Productos", "productList", "Product", new { area = "" }, new { @class = "nav-link black-text" })
-        @Html.ActionLink("Carrito de Compras", "shoppingCart", "Product", new { area = "" }, new { @class = "nav-link black-text" })
+    <nav class="navbar navbar-expand-sm bg-green navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                @Html.ActionLink("Mercadito Feliz", "Index", "Home", new { area = "" }, new { @class = "nav-link text-dark" })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Añadir Producto", "addProduct", "Product", new { area = "" }, new { @class = "nav-link text-dark" })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Ver Productos", "productList", "Product", new { area = "" }, new { @class = "nav-link text-dark" })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Carrito de Compras", "shoppingCart", "Product", new { area = "" }, new { @class = "nav-link text-dark" })
+            </li>
+        </ul>
     </nav>
     <div class="container body-content">
         @RenderBody()
