@@ -18,9 +18,9 @@
                              <div class="card-body">
                                  <h4 class="card-title">@product.name</h4>
                                  <p class="card-text">@product.description</p>
-                                 <p class="card-text">Cantidad para descuento: @product.discountAmount</p>
-                                 <p class="card-text">Descuento: @product.discount</p>
-                                 <p class="card-text">Precio: @product.price</p>
+                                 <p class="card-text">Cantidad para descuento: @product.discountAmount unidades</p>
+                                 <p class="card-text">Descuento: @product.discount colones</p>
+                                 <p class="card-text">Precio: @product.price colones</p>
                                  @Html.ActionLink("Comprar individualmente", "addProductToCart", new { productID = product.id, amount = 1 }, new { @class = "btn btn-sm btn-primary" })
                                  @Html.ActionLink("Comprar en paquete", "addProductToCart", new { productID = product.id, amount = product.discountAmount }, new { @class = "btn btn-sm btn-primary" })
                              </div>
