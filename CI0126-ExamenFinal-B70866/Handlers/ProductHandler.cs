@@ -38,5 +38,17 @@ namespace CI0126_ExamenFinal_B70866.Handlers
                 throw e;
             }
         }
+
+        public List<Product> getAllCommunityMembers()
+        {
+            IEnumerable<Product> products = db.Query("Product").Select(
+                "productName as name", 
+                "productDescription as description", 
+                "discountAmount as discountAmount",
+                "price as price",
+                "discount as discount"
+                ).Get<Product>();
+            return products.AsList();
+        }
     }
 }

@@ -10,10 +10,6 @@ namespace CI0126_ExamenFinal_B70866.Controllers
 {
     public class ProductController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult addProduct() 
         {
             return View();
