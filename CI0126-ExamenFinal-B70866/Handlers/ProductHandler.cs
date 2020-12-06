@@ -5,9 +5,8 @@ using System.Web;
 using System.IO;
 using Dapper;
 using CI0126_ExamenFinal_B70866.Models;
-using CI0126_ExamenFinal_B70866.Handlers;
 
-namespace comunidad_practica.Handlers
+namespace CI0126_ExamenFinal_B70866.Handlers
 {
     public class ProductHandler : Handler
     {
@@ -30,8 +29,8 @@ namespace comunidad_practica.Handlers
                     newProduct.discountAmount,
                     newProduct.price,
                     newProduct.discount,
-                    eventImage = getBytes(newProduct.image),
-                    fileType = newProduct.image.ContentType,
+                    image = getBytes(newProduct.image),
+                    imageType = newProduct.image.ContentType,
                 });
             }
             catch (Exception e)

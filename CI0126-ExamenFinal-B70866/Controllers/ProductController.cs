@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CI0126_ExamenFinal_B70866.Models;
+using CI0126_ExamenFinal_B70866.Handlers;
 
 namespace CI0126_ExamenFinal_B70866.Controllers
 {
@@ -20,7 +21,8 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         [HttpPost]
         public ActionResult addProduct(Product product)
         {
-            
+            ProductHandler handler = new ProductHandler();
+            handler.addProduct(product);
             return View();
         }
     }
