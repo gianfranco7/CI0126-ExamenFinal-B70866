@@ -18,7 +18,7 @@ namespace CI0126_ExamenFinal_B70866.Handlers
                 db.Query("ShoppingCart").Insert(new
                 {
                     productID = product.id,
-                    productName = product.name
+                    amount = product.amount
                 });
             }
             catch (Exception e)

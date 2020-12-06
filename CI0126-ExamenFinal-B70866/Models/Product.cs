@@ -32,5 +32,7 @@ namespace CI0126_ExamenFinal_B70866.Models
         public HttpPostedFileBase image { get; set; }
 
         public string fileType { get; set; }
+
+        public int amount { get; set; }
     }
 }
