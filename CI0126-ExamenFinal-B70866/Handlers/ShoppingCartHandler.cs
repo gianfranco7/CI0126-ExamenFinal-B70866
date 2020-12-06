@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using SqlKata.Execution;
 using System.Web;
-using System.IO;
-using Dapper;
 using CI0126_ExamenFinal_B70866.Models;
-using Helpers;
 
 namespace CI0126_ExamenFinal_B70866.Handlers
 {
