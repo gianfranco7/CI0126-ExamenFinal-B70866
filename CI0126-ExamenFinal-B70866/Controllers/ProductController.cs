@@ -114,7 +114,10 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         public ActionResult shoppingCart()
         {
             ProductHandler productHandler = new ProductHandler();
-            ViewBag.productsInCart = productHandler.getAllProductsInCart().ToList();
+            List<Product> productsInCart = productHandler.getAllProductsInCart().ToList();
+            int[] amountOfProductsInCart = getAmountOfProductsInCart(productsInCart);
+            ViewBag.productsInCart = productsInCart;
+            ViewBag.productDiscounts = getDiscounts(amountOfProductsInCart);
             ViewBag.totalPrice = getTotalPrice();
             return View();
         }
