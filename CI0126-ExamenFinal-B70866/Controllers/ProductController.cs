@@ -38,5 +38,24 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             var tuple = productHandler.downloadImage(productID);
             return File(tuple.Item1, tuple.Item2);
         }
+
+        [HttpGet]
+        public ActionResult addProductToCart(int productID, int amount)
+        {
+            ShoppingCartHandler shoppingCartHandler = new ShoppingCartHandler();
+            Product newProduct = new Product();
+            newProduct.id = productID;
+            newProduct.amount = amount;
+            shoppingCartHandler.addProductToCart(newProduct);
+            return RedirectToAction("shoppingCart");
+        }
+
+        [HandleError]
+        public ActionResult shoppingCart()
+        {
+            ShoppingCartHandler shoppingCartHandler = new ShoppingCartHandler();
+            ViewBag.productsInCart = shoppingCartHandler.getAllProductsInCart().ToList<Product>();
+            return View(ViewBag.productsInCart);
+        }
     }
 }
