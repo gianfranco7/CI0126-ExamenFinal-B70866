@@ -95,12 +95,15 @@ namespace CI0126_ExamenFinal_B70866.Controllers
 
         public double[] getDiscounts(int[] amountsArray) 
         {
+            ProductHandler productHandler = new ProductHandler();
             double[] discountsArray = new double[amountsArray.Length];
             for (int i = 0; i < amountsArray.Length; i++)
             {
                 if (amountsArray[i] != 0) 
                 {
-                   
+                    double discount = productHandler.getProductDiscount(i);
+                    int discountAmount = productHandler.getProductDiscountAmount(i);
+                    int amountOfDiscounts = amountsArray[i] % discountAmount;
                 }
             }
             return discountsArray;

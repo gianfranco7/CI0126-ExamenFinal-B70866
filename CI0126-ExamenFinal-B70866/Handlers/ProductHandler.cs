@@ -66,7 +66,7 @@ namespace CI0126_ExamenFinal_B70866.Handlers
             return product.price;
         }
 
-        public double getProductDiscountAmount(int id)
+        public int getProductDiscountAmount(int id)
         {
             Product product = db.Query("Product").Select("discountAmount").Where("productID", id).FirstOrDefault<Product>();
             return product.discountAmount;
