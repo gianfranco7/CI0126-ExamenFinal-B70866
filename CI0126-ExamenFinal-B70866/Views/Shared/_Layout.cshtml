@@ -11,11 +11,6 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 <style>
-    .bg-green {
-        background-color: #dbffc9;
-    }
-</style>
-<style>
         input,
         select,
         textarea {
@@ -27,7 +22,7 @@
     <nav class="navbar navbar-expand-sm fixed-top bg-info navbar-dark">
         <ul class="navbar-nav">
             <li class="nav-item">
-                @Html.ActionLink("Mercadito Feliz", "Index", "Home", new { area = "" }, new { @class = "nav-link text-dark" })
+                @Html.ActionLink("Mercadito Feliz", "productList", "Product", new { area = "" }, new { @class = "nav-link text-dark" })
             </li>
             <li class="nav-item">
                 @Html.ActionLink("Añadir Producto", "addProduct", "Product", new { area = "" }, new { @class = "nav-link text-dark" })
