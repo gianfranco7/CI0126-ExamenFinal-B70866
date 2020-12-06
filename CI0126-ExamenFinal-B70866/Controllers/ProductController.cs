@@ -104,6 +104,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
                     double discount = productHandler.getProductDiscount(i);
                     int discountAmount = productHandler.getProductDiscountAmount(i);
                     int amountOfDiscounts = amountsArray[i] % discountAmount;
+                    discountsArray[i] = amountOfDiscounts * discount;
                 }
             }
             return discountsArray;
