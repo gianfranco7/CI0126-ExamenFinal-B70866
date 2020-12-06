@@ -25,6 +25,9 @@
             <div>
                 @product.discount
             </div>
+            <div>
+                <img src=@Url.Action("fileAccess", "Product", new {productID = product.id}) style="width:128px;height:128px;" />
+            </div>
 
         }
     }
