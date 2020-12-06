@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using CI0126_ExamenFinal_B70866.Models;
 using CI0126_ExamenFinal_B70866.Handlers;
