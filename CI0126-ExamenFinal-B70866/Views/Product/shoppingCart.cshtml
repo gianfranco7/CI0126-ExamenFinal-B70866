@@ -19,6 +19,10 @@
             <br />
             <br />
         }
+        for (int i = 0; i < ViewBag.productDiscounts.Length; i++) 
+        { 
+            <div>Descuento aplicado al producto @i : @ViewBag.productDiscounts[i]   </div>
+        }
     }  
     <div>Precio a pagar: @ViewBag.totalPrice </div>
 </body>

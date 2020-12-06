@@ -68,7 +68,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             {
                 if (!productIDs.Exists(id => id == product.id))
                 {
-                    productIDs.Append(product.id);
+                    productIDs.Add(product.id);
                 }
             }
             productIDs.OrderByDescending(id => id);
@@ -78,7 +78,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         public int[] getAmountOfProductsInCart(List<Product> products) 
         {
             List<int> productIDs = getOrderedDistinctIDs(products);
-            int arraySize = productIDs.First();
+            int arraySize = productIDs.First()+2;
             int[] amountsArray = new int[arraySize];
             foreach (var id in productIDs)
             {
