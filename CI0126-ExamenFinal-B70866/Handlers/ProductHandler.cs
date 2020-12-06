@@ -68,6 +68,12 @@ namespace CI0126_ExamenFinal_B70866.Handlers
 
         public double getProductDiscountAmount(int id)
         {
+            Product product = db.Query("Product").Select("discountAmount").Where("productID", id).FirstOrDefault<Product>();
+            return product.discountAmount;
+        }
+
+        public double getProductDiscount(int id)
+        {
             Product product = db.Query("Product").Select("discount").Where("productID", id).FirstOrDefault<Product>();
             return product.discount;
         }
