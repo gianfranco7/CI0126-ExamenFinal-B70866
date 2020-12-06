@@ -532,6 +532,7 @@
     <Content Include="Views\Product\addProduct.cshtml" />
     <Content Include="Views\Product\productList.cshtml" />
     <Content Include="Views\Product\shoppingCart.cshtml" />
+    <Content Include="Views\Product\buyProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
