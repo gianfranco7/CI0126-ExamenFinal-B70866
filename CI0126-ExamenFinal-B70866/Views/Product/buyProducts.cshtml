@@ -13,14 +13,16 @@
                 <h5> @ViewBag.errorMsg </h5>
             </div>
         }
-        <h4 class="text-center"> Comprar Productos </h4>
+        <br />
+        <h2 class="text-center"> Comprar Productos </h2>
         <br />
         <div class="form-horizontal">
-            <div class="input-field col s12">
+            <div class="input-group-lg">
                 @Html.TextBoxFor(model => model.address, new { @class = "form-control", @placeholder = "Ingrese la dirección adonde se enviarán los productos" })
                 @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
             </div>
-            <input type="submit" class="btn btn-lg col-12" value="Comprar Productos" />
+            <br />
+            <input type="submit" class="btn btn-lg btn-info" value="Comprar Productos" />
         </div>
     }
 </body>

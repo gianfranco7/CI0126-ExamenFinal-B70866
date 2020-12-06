@@ -3,10 +3,20 @@
 }
 <!DOCTYPE html>
 <html>
+<head>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+</head>
 <body>
-    <h4 class="text-center">
-        Productos en Mi Carrito de Compras
-    </h4>
+    <br />
+    <h2 class="text-center">
+        Mi Carrito de Compras
+    </h2>
     @{
         foreach (var product in ViewBag.productsInCart)
         {
@@ -25,8 +35,7 @@
         }
     }
     <div>Precio a pagar: @ViewBag.totalPrice </div>
-    @Html.ActionLink("Proceder a Checkout", "buyProducts", "Product", new { @class = "btn btn-lg" })
-
+    @Html.ActionLink("Proceder a Checkout", "buyProducts", "Product", new { @class = "btn btn-info btn-lg" })
 </body>
 </html>
 

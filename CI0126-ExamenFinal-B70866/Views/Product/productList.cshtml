@@ -4,34 +4,31 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <h4 class="text-center">
+    <br />
+    <h2 class="text-center">
         Productos Disponibles
-    </h4>
-    @{
-        foreach (var product in ViewBag.products)
-        {
-            <div>
-                @product.name
-            </div>
-            <div>
-                @product.description
-            </div>
-            <div>
-                @product.discountAmount
-            </div>
-            <div>
-                @product.price
-            </div>
-            <div>
-                @product.discount
-            </div>
-            <div>
-                <img src=@Url.Action("fileAccess", "Product", new {productID = product.id}) style="width:128px;height:128px;" />
-            </div>
-            <div>
-                @Html.ActionLink("Comprar individualmente", "addProductToCart", new { productID = product.id, amount = 1 })
-            </div>
-        }
-    }
+    </h2><br />
+         <div class="row">
+             @{
+                 foreach (var product in ViewBag.products)
+                 {
+                     <div class="col-sm-4 container">
+                         <div class="card" style="width:400px">
+                             <img src=@Url.Action("fileAccess", "Product", new { productID = product.id }) style="width:300px;height:300px;" />
+                             <div class="card-body">
+                                 <h4 class="card-title">@product.name</h4>
+                                 <p class="card-text">@product.description</p>
+                                 <p class="card-text">Cantidad para descuento: @product.discountAmount unidades</p>
+                                 <p class="card-text">Descuento: @product.discount colones</p>
+                                 <p class="card-text">Precio: @product.price colones</p>
+                                 @Html.ActionLink("Comprar individualmente", "addProductToCart", new { productID = product.id, amount = 1 }, new { @class = "btn btn-sm btn-primary" })
+                                 @Html.ActionLink("Comprar en paquete", "addProductToCart", new { productID = product.id, amount = product.discountAmount }, new { @class = "btn btn-sm btn-primary" })
+                             </div>
+                         </div>
+                         <br>
+                     </div>
+                 }
+             }
+         </div>
 </body>
 </html>
