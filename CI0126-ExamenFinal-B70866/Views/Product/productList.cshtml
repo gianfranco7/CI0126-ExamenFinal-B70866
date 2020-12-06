@@ -29,7 +29,7 @@
                 <img src=@Url.Action("fileAccess", "Product", new {productID = product.id}) style="width:128px;height:128px;" />
             </div>
             <div>
-                @Html.ActionLink("Añadir al carrito", "addProductToCart", new { productID = product.id, amount = 1 })
+                @Html.ActionLink("Comprar individualmente", "addProductToCart", new { productID = product.id, amount = 1 })
             </div>
         }
     }

@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using CI0126_ExamenFinal_B70866.Models;
 using CI0126_ExamenFinal_B70866.Handlers;
+using System.Collections.Generic;
 
 namespace CI0126_ExamenFinal_B70866.Controllers
 {
@@ -39,20 +40,86 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         [HttpGet]
         public ActionResult addProductToCart(int productID, int amount)
         {
-            ShoppingCartHandler shoppingCartHandler = new ShoppingCartHandler();
+            ProductHandler productHandler = new ProductHandler();
             Product newProduct = new Product();
             newProduct.id = productID;
             newProduct.amount = amount;
-            shoppingCartHandler.addProductToCart(newProduct);
+            productHandler.addProductToCart(newProduct);
             return RedirectToAction("shoppingCart");
+        }
+
+        public double getTotalPrice()
+        {
+            double totalPrice = 0;
+            ProductHandler productHandler = new ProductHandler();
+            List<Product> productList = productHandler.getAllProductsInCart().ToList();
+            foreach (var product in productList)
+            {
+               product.price = productHandler.getProductPrice(product.id);
+               totalPrice += product.price;
+            }
+            return totalPrice;
+        }
+
+        public List<int> getOrderedDistinctIDs(List<Product>products) 
+        {
+            List<int> productIDs = new List<int>();
+            foreach (var product in products) 
+            {
+                if (!productIDs.Exists(id => id == product.id))
+                {
+                    productIDs.Add(product.id);
+                }
+            }
+            productIDs.OrderByDescending(id => id);
+            return productIDs;
+        }
+
+        public int[] getAmountOfProductsInCart(List<Product> products) 
+        {
+            List<int> productIDs = getOrderedDistinctIDs(products);
+            int arraySize = productIDs.First()+2;
+            int[] amountsArray = new int[arraySize];
+            foreach (var id in productIDs)
+            {
+                foreach (var product in products) 
+                {
+                    if (id == product.id) 
+                    {
+                        amountsArray[id] +=product.amount;
+                    }
+                }           
+            }
+            return amountsArray;
+        }
+
+        public double[] getDiscounts(int[] amountsArray) 
+        {
+            ProductHandler productHandler = new ProductHandler();
+            double[] discountsArray = new double[amountsArray.Length];
+            for (int i = 0; i < amountsArray.Length; i++)
+            {
+                if (amountsArray[i] != 0) 
+                {
+                    double discount = productHandler.getProductDiscount(i);
+                    int discountAmount = productHandler.getProductDiscountAmount(i);
+                    int amountOfDiscounts = amountsArray[i] % discountAmount;
+                    discountsArray[i] = amountOfDiscounts * discount;
+                }
+            }
+            return discountsArray;
         }
 
         [HandleError]
         public ActionResult shoppingCart()
         {
-            ShoppingCartHandler shoppingCartHandler = new ShoppingCartHandler();
-            ViewBag.productsInCart = shoppingCartHandler.getAllProductsInCart().ToList<Product>();
-            return View(ViewBag.productsInCart);
+            ProductHandler productHandler = new ProductHandler();
+            List<Product> productsInCart = productHandler.getAllProductsInCart().ToList();
+            int[] amountOfProductsInCart = getAmountOfProductsInCart(productsInCart);
+            ViewBag.productsInCart = productsInCart;
+            ViewBag.productDiscounts = getDiscounts(amountOfProductsInCart);
+            ViewBag.totalPrice = getTotalPrice();
+            return View();
         }
     }
 }

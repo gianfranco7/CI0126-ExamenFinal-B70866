@@ -54,8 +54,51 @@ namespace CI0126_ExamenFinal_B70866.Handlers
                 "productName as name", 
                 "productDescription as description", 
                 "discountAmount as discountAmount",
-                "price as price",
+                "price",
                 "discount as discount"
+                ).Get<Product>();
+            return products.AsList();
+        }
+
+        public double getProductPrice(int id)
+        {
+            Product product = db.Query("Product").Select("price").Where("productID", id).FirstOrDefault<Product>();
+            return product.price;
+        }
+
+        public int getProductDiscountAmount(int id)
+        {
+            Product product = db.Query("Product").Select("discountAmount").Where("productID", id).FirstOrDefault<Product>();
+            return product.discountAmount;
+        }
+
+        public double getProductDiscount(int id)
+        {
+            Product product = db.Query("Product").Select("discount").Where("productID", id).FirstOrDefault<Product>();
+            return product.discount;
+        }
+
+        public void addProductToCart(Product product)
+        {
+            try
+            {
+                db.Query("ShoppingCart").Insert(new
+                {
+                    productID = product.id,
+                    productAmount = product.amount
+                });
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public List<Product> getAllProductsInCart()
+        {
+            IEnumerable<Product> products = db.Query("ShoppingCart").Select(
+                "productID as id",
+                "productAmount as amount"
                 ).Get<Product>();
             return products.AsList();
         }
