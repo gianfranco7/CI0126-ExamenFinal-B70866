@@ -98,7 +98,10 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             double[] discountsArray = new double[amountsArray.Length];
             for (int i = 0; i < amountsArray.Length; i++)
             {
-                
+                if (amountsArray[i] != 0) 
+                {
+                   
+                }
             }
             return discountsArray;
         }
