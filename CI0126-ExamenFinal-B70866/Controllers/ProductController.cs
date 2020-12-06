@@ -121,5 +121,10 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             ViewBag.totalPrice = getTotalPrice();
             return View();
         }
+
+        public ActionResult buyProducts() 
+        {
+            return View();
+        }
     }
 }

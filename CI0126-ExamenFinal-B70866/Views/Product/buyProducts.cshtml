@@ -1,0 +1,30 @@
+﻿@model CI0126_ExamenFinal_B70866.Models.Customer
+@{
+    ViewBag.Title = "buyProducts";
+}
+<html>
+<body>
+    @using (Html.BeginForm("buyProducts", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        if (ViewBag.errorMsg != null)
+        {
+            <div class="alert-danger">
+                <h5> @ViewBag.errorMsg </h5>
+            </div>
+        }
+        <h4 class="text-center"> Comprar Productos </h4>
+        <br />
+        <div class="form-horizontal">
+            <div class="input-field col s12">
+                @Html.TextBoxFor(model => model.address, new { @class = "form-control", @placeholder = "Ingrese la dirección adonde se enviarán los productos" })
+                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+            </div>
+            <input type="submit" class="btn btn-lg col-12" value="Comprar Productos" />
+        </div>
+    }
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+</html>

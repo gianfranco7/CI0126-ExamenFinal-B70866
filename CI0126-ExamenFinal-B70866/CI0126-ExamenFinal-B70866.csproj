@@ -487,6 +487,7 @@
     <Compile Include="Handlers\Handler.cs" />
     <Compile Include="Handlers\ProductHandler.cs" />
     <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -531,6 +532,7 @@
     <Content Include="Views\Product\addProduct.cshtml" />
     <Content Include="Views\Product\productList.cshtml" />
     <Content Include="Views\Product\shoppingCart.cshtml" />
+    <Content Include="Views\Product\buyProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
