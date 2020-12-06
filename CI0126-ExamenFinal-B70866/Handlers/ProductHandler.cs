@@ -54,10 +54,16 @@ namespace CI0126_ExamenFinal_B70866.Handlers
                 "productName as name", 
                 "productDescription as description", 
                 "discountAmount as discountAmount",
-                "price as price",
+                "price",
                 "discount as discount"
                 ).Get<Product>();
             return products.AsList();
+        }
+
+        public double getProductPrice(int id)
+        {
+            Product product = db.Query("Product").Select("price").Where("productID", id).FirstOrDefault<Product>();
+            return product.price;
         }
 
         public void addProductToCart(Product product)

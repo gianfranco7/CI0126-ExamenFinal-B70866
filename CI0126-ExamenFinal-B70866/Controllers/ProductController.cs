@@ -55,7 +55,8 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             List<Product> productList = productHandler.getAllProductsInCart().ToList();
             foreach (var product in productList)
             {
-                totalPrice += product.price;
+               product.price = productHandler.getProductPrice(product.id);
+               totalPrice += product.price;
             }
             return totalPrice;
         }
