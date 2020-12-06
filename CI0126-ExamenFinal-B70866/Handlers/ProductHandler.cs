@@ -24,12 +24,12 @@ namespace CI0126_ExamenFinal_B70866.Handlers
             {
                 db.Query("Product").Insert(new
                 {
-                    newProduct.name,
-                    newProduct.description,
+                    productName = newProduct.name,
+                    productDescription = newProduct.description,
                     newProduct.discountAmount,
                     newProduct.price,
                     newProduct.discount,
-                    image = getBytes(newProduct.image),
+                    productImage = getBytes(newProduct.image),
                     imageType = newProduct.image.ContentType,
                 });
             }
