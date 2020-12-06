@@ -93,6 +93,16 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return amountsArray;
         }
 
+        public double[] getDiscounts(int[] amountsArray) 
+        {
+            double[] discountsArray = new double[amountsArray.Length];
+            for (int i = 0; i < amountsArray.Length; i++)
+            {
+                
+            }
+            return discountsArray;
+        }
+
         [HandleError]
         public ActionResult shoppingCart()
         {
