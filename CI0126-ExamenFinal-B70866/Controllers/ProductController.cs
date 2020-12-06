@@ -61,6 +61,38 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return totalPrice;
         }
 
+        public List<int> getOrderedDistinctIDs(List<Product>products) 
+        {
+            List<int> productIDs = new List<int>();
+            foreach (var product in products) 
+            {
+                if (!productIDs.Exists(id => id == product.id))
+                {
+                    productIDs.Append(product.id);
+                }
+            }
+            productIDs.OrderByDescending(id => id);
+            return productIDs;
+        }
+
+        public int[] getAmountOfProductsInCart(List<Product> products) 
+        {
+            List<int> productIDs = getOrderedDistinctIDs(products);
+            int arraySize = productIDs.First();
+            int[] amountsArray = new int[arraySize];
+            foreach (var id in productIDs)
+            {
+                foreach (var product in products) 
+                {
+                    if (id == product.id) 
+                    {
+                        amountsArray[id] +=product.amount;
+                    }
+                }           
+            }
+            return amountsArray;
+        }
+
         [HandleError]
         public ActionResult shoppingCart()
         {
