@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SqlKata.Execution;
-using System.Web;
+using Dapper;
 using CI0126_ExamenFinal_B70866.Models;
 
 namespace CI0126_ExamenFinal_B70866.Handlers
@@ -22,6 +22,15 @@ namespace CI0126_ExamenFinal_B70866.Handlers
             {
                 throw e;
             }
+        }
+
+        public List<Product> getAllProductsInCart()
+        {
+            IEnumerable<Product> products = db.Query("ShoppingCart").Select(
+                "productID as id",
+                "productAmount as amount"
+                ).Get<Product>();
+            return products.AsList();
         }
     }
 }
