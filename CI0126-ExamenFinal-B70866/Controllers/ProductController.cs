@@ -14,12 +14,21 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult addProduct(Product product)
         {
             ProductHandler handler = new ProductHandler();
             handler.addProduct(product);
             return View();
+        }
+
+        [HandleError]
+        public ActionResult productList()
+        {
+            ProductHandler productHandler = new ProductHandler();
+            ViewBag.products = productHandler.getAllProducts().ToList<Product>();
+            return View(ViewBag.products);
         }
     }
 }

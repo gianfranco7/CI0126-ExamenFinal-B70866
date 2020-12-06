@@ -39,9 +39,10 @@ namespace CI0126_ExamenFinal_B70866.Handlers
             }
         }
 
-        public List<Product> getAllCommunityMembers()
+        public List<Product> getAllProducts()
         {
             IEnumerable<Product> products = db.Query("Product").Select(
+                "productID as id",
                 "productName as name", 
                 "productDescription as description", 
                 "discountAmount as discountAmount",
