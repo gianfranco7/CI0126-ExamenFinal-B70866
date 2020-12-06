@@ -3,6 +3,15 @@
     ViewBag.Title = "addProduct";
 }
 <html>
+<head>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+</head>
 <body>
     @using (Html.BeginForm("addProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -13,34 +22,34 @@
                 <h5> @ViewBag.errorMsg </h5>
             </div>
         }
-        <h4 class="text-center"> Añadir Producto</h4>
+        <h2 class="text-center"> Añadir Producto</h2>
         <br />
         <div class="form-horizontal">
-            <div class="input-field col s12">
+            <div class="jumbotron">
                 @Html.TextBoxFor(model => model.name, new { @class = "form-control", @placeholder = "Nombre del Producto" })
                 @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
             </div>
-            <div class="input-field col s12">
+            <div class="jumbotron">
                 @Html.TextBoxFor(model => model.description, new { @class = "form-control", @placeholder = "Decripción del Producto" })
                 @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
             </div>
-            <div class="input-field col s12">
+            <div class="jumbotron">
                 @Html.TextBoxFor(model => model.discountAmount, new { @class = "form-control", @placeholder = "Cantidad para descuento" })
                 @Html.ValidationMessageFor(model => model.discountAmount, "", new { @class = "text-danger" })
             </div>
-            <div class="input-field col s12">
+            <div class="jumbotron">
                 @Html.TextBoxFor(model => model.price, new { @class = "form-control", @placeholder = "Precio del Producto" })
                 @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
             </div>
-            <div class="input-field col s12">
+            <div class="jumbotron">
                 @Html.TextBoxFor(model => model.discount, new { @class = "form-control", @placeholder = "Descuento del Producto" })
                 @Html.ValidationMessageFor(model => model.discount, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group">
+            <div class="jumbotron">
                 @Html.TextBoxFor(model => model.image, new { type = "file", @class = "btn btn-block light-blue lighten-4 black-text", @value = "Ingrese la imagen para el producto" })
                 @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
             </div>
-            <input type="submit" class="btn btn-lg col-12" value="Añadir Producto" />
+            <input type="submit" class="btn btn-lg btn-info col-12" value="Añadir Producto" />
         </div>
     }
 </body>

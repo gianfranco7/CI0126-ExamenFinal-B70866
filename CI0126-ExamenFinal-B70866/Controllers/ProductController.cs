@@ -71,15 +71,15 @@ namespace CI0126_ExamenFinal_B70866.Controllers
                     productIDs.Add(product.id);
                 }
             }
-            productIDs.OrderByDescending(id => id);
+            productIDs.OrderBy(id => id);
             return productIDs;
         }
 
         public int[] getAmountOfProductsInCart(List<Product> products) 
         {
             List<int> productIDs = getOrderedDistinctIDs(products);
-            int arraySize = productIDs.Count();
-            int[] amountsArray = new int[arraySize+1];
+            int arraySize = productIDs.First();
+            int[] amountsArray = new int[arraySize];
             foreach (var id in productIDs)
             {
                 foreach (var product in products) 
@@ -97,7 +97,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         {
             ProductHandler productHandler = new ProductHandler();
             double[] discountsArray = new double[amountsArray.Length];
-            for (int i = 0; i < amountsArray.Length; i++)
+            for (int i = 1; i < amountsArray.Length; i++)
             {
                 if (amountsArray[i] != 0) 
                 {
