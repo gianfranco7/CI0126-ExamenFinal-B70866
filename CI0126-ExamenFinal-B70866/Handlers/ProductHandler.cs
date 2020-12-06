@@ -59,5 +59,30 @@ namespace CI0126_ExamenFinal_B70866.Handlers
                 ).Get<Product>();
             return products.AsList();
         }
+
+        public void addProductToCart(Product product)
+        {
+            try
+            {
+                db.Query("ShoppingCart").Insert(new
+                {
+                    productID = product.id,
+                    productAmount = product.amount
+                });
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public List<Product> getAllProductsInCart()
+        {
+            IEnumerable<Product> products = db.Query("ShoppingCart").Select(
+                "productID as id",
+                "productAmount as amount"
+                ).Get<Product>();
+            return products.AsList();
+        }
     }
 }
