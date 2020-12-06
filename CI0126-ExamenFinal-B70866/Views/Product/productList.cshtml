@@ -10,7 +10,7 @@
     <div class="row">
         @{foreach (var product in ViewBag.products)
             {
-                <div class="col-sm">
+                <div class="col-sm-4">
                     <div>
                         Nombre: @product.name
                     </div>
@@ -30,12 +30,12 @@
                         <img src=@Url.Action("fileAccess", "Product", new { productID = product.id }) style="width:128px;height:128px;" />
                     </div>
                     <div>
-                        @Html.ActionLink("Comprar individualmente", "addProductToCart", new { productID = product.id, amount = 1 }, new { @class = "btn btn-primary" })
-                        @Html.ActionLink("Comprar en paquete", "addProductToCart", new { productID = product.id, amount = product.discountAmount }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Comprar individualmente", "addProductToCart", new { productID = product.id, amount = 1 }, new { @class = "btn btn-sm btn-primary" })
+                        @Html.ActionLink("Comprar en paquete", "addProductToCart", new { productID = product.id, amount = product.discountAmount }, new { @class = "btn btn-sm btn-primary" })
                     </div>
                 </div>
-                }
             }
-        </div>
+        }
+    </div>
 </body>
 </html>
