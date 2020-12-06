@@ -30,5 +30,13 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             ViewBag.products = productHandler.getAllProducts().ToList<Product>();
             return View(ViewBag.products);
         }
+
+        [HttpGet]
+        public ActionResult fileAccess(int productID)
+        {
+            ProductHandler productHandler = new ProductHandler();
+            var tuple = productHandler.downloadImage(productID);
+            return File(tuple.Item1, tuple.Item2);
+        }
     }
 }

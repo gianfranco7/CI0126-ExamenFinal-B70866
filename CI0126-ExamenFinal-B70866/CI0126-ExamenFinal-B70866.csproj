@@ -486,6 +486,7 @@
     </Compile>
     <Compile Include="Handlers\Handler.cs" />
     <Compile Include="Handlers\ProductHandler.cs" />
+    <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
