@@ -28,7 +28,9 @@
             <div>
                 <img src=@Url.Action("fileAccess", "Product", new {productID = product.id}) style="width:128px;height:128px;" />
             </div>
-
+            <div>
+                @Html.ActionLink("Añadir al carrito", "addProductToCart", "ShoppingCart", new { newProduct = product, amount = 1 }, new { @class = "btn btn-block light-blue lighten-4 black-text" })
+            </div>
         }
     }
 </body>

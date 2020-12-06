@@ -16,10 +16,11 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         }
 
         [HttpPost]
-        public ActionResult addProductToCart(Product product)
+        public ActionResult addProductToCart(Product newProduct, int amount)
         {
             ShoppingCartHandler shoppingCartHandler = new ShoppingCartHandler();
-            shoppingCartHandler.addProductToCart(product);
+            newProduct.amount = amount;
+            shoppingCartHandler.addProductToCart(newProduct);
             return View();
         }
 

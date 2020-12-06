@@ -533,10 +533,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\addProduct.cshtml" />
     <Content Include="Views\Product\productList.cshtml" />
+    <Content Include="Views\ShoppingCart\shoppingCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ShoppingCart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
