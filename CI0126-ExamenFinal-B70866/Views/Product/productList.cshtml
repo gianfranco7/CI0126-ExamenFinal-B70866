@@ -11,25 +11,25 @@
         foreach (var product in ViewBag.products)
         {
             <div>
-                @product.name
+                Nombre: @product.name
             </div>
             <div>
-                @product.description
+                Descripción: @product.description
             </div>
             <div>
-                @product.discountAmount
+                Cantidad para descuento: @product.discountAmount
             </div>
             <div>
-                @product.price
+                Precio: @product.price
             </div>
             <div>
-                @product.discount
+                Descuento: @product.discount
             </div>
             <div>
                 <img src=@Url.Action("fileAccess", "Product", new {productID = product.id}) style="width:128px;height:128px;" />
             </div>
             <div>
-                @Html.ActionLink("Comprar individualmente", "addProductToCart", new { productID = product.id, amount = 1 })
+                @Html.ActionLink("Comprar individualmente", "addProductToCart", new { productID = product.id, amount = 1 }, new {@class = "btn btn-primary" })
             </div>
         }
     }
