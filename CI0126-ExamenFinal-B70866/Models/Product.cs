@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.ComponentModel.DataAnnotations;
 
 namespace CI0126_ExamenFinal_B70866.Models
@@ -35,5 +32,7 @@ namespace CI0126_ExamenFinal_B70866.Models
         public HttpPostedFileBase image { get; set; }
 
         public string fileType { get; set; }
+
+        public int amount { get; set; }
     }
 }

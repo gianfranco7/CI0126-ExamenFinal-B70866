@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "ShoppingCart";
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <h4 class="text-center">
+        Productos en Mi Carrito de Compras
+    </h4>
+    @{
+        foreach (var product in ViewBag.productsInCart)
+        {
+            <div>
+                ID del producto: @product.id
+            </div>
+            <div>
+                Cantidad en el carrito: @product.amount
+            </div>
+            <br />
+            <br />
+        }
+    }
+</body>
+</html>
+

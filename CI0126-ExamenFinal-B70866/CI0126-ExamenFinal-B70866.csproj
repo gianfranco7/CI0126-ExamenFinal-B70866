@@ -486,8 +486,10 @@
     </Compile>
     <Compile Include="Handlers\Handler.cs" />
     <Compile Include="Handlers\ProductHandler.cs" />
+    <Compile Include="Handlers\ShoppingCartHandler.cs" />
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -513,6 +515,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="SQL Scripts\Product.sql" />
+    <Content Include="SQL Scripts\ShoppingCart.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -529,6 +532,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\addProduct.cshtml" />
     <Content Include="Views\Product\productList.cshtml" />
+    <Content Include="Views\Product\shoppingCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
