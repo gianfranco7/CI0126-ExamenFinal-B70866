@@ -110,12 +110,23 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return discountsArray;
         }
 
+        public List<Product> getProductNames(List<Product> products) 
+        {
+            ProductHandler productHandler = new ProductHandler();
+            foreach (var product in products) 
+            {
+                product.name = productHandler.getProductName(product.id);   
+            }
+            return products;
+        }
+
         [HandleError]
         public ActionResult shoppingCart()
         {
             ProductHandler productHandler = new ProductHandler();
             List<Product> productsInCart = productHandler.getAllProductsInCart().ToList();
             int[] amountOfProductsInCart = getAmountOfProductsInCart(productsInCart);
+            productsInCart = getProductNames(productsInCart);
             ViewBag.productsInCart = productsInCart;
             ViewBag.productDiscounts = getDiscounts(amountOfProductsInCart);
             ViewBag.totalPrice = getTotalPrice();

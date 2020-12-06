@@ -17,21 +17,19 @@
     <h2 class="text-center">
         Mi Carrito de Compras
     </h2>
+    <br />
     @{
         foreach (var product in ViewBag.productsInCart)
         {
-            <div>
-                ID del producto: @product.id
+            <div class="card">
+                    <p class="card-text">Nombre del Producto: @product.name</p>
+                    <p class="card-text">Cantidad en el carrito: @product.amount</p>
             </div>
-            <div>
-                Cantidad en el carrito: @product.amount
-            </div>
-            <br />
             <br />
         }
         for (int i = 0; i < ViewBag.productDiscounts.Length; i++)
         {
-            <div>Descuento aplicado al producto @i : @ViewBag.productDiscounts[i]   </div>
+            <div class="btn-outline-success">Descuento aplicado al producto @i : @ViewBag.productDiscounts[i]   </div>
         }
     }
     <div>Precio a pagar: @ViewBag.totalPrice </div>
