@@ -3,29 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>@ViewBag.Title - Mercadito Feliz</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-        <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-
 </head>
 <body>
-            <nav class="light-green lighten-4">
-                <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Mercadito Feliz</a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li>@Html.ActionLink("Añadir Producto", "addProduct", "Product")</li>
-                        <li>@Html.ActionLink("Ver Productos", "productList", "Product")</li>
-                        <li>@Html.ActionLink("Carrito de Compras", "shoppingCart", "Product")</li>
-                    </ul>
-                </div>
-            </nav>
+    <nav class="navbar navbar-dark bg-dark">
+        @Html.ActionLink("Mercadito Feliz", "Index", "Home", new { area = "" })
+        @Html.ActionLink("Añadir Producto", "addProduct", "Product", new { area = "" }, new { @class = "nav-link black-text" })
+        @Html.ActionLink("Ver Productos", "productList", "Product", new { area = "" }, new { @class = "nav-link black-text" })
+        @Html.ActionLink("Carrito de Compras", "shoppingCart", "Product", new { area = "" }, new { @class = "nav-link black-text" })
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />

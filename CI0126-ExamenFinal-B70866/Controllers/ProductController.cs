@@ -78,15 +78,15 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         public int[] getAmountOfProductsInCart(List<Product> products) 
         {
             List<int> productIDs = getOrderedDistinctIDs(products);
-            int arraySize = productIDs.First();
-            int[] amountsArray = new int[arraySize];
+            int arraySize = productIDs.Last();
+            int[] amountsArray = new int[arraySize+2];
             foreach (var id in productIDs)
             {
                 foreach (var product in products) 
                 {
-                    if (id == product.id) 
+                    if (id+1 == product.id) 
                     {
-                        amountsArray[id] += product.amount;
+                        amountsArray[id+1] += product.amount;
                     }
                 }           
             }
