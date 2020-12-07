@@ -120,6 +120,16 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return products;
         }
 
+        public List<Product> getProductPrices(List<Product> products) 
+        {
+            ProductHandler productHandler = new ProductHandler();
+            foreach (var product in products)
+            {
+                product.name = productHandler.getProductPrice(product.id);
+            }
+            return products;
+        }
+
         [HandleError]
         public ActionResult shoppingCart()
         {
