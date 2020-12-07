@@ -53,11 +53,10 @@ namespace CI0126_ExamenFinal_B70866.Tests.Controllers
         public void addProductToCartTest()
         {
             // Arrange
-            Product testProduct = new Product();
             ProductController controller = new ProductController();
 
             // Act
-            ActionResult result = controller.addProduct(testProduct);
+            ActionResult result = controller.addProductToCart(5,5);
 
             // Assert
             Assert.IsNotNull(result);
