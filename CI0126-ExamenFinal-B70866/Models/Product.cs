@@ -34,5 +34,7 @@ namespace CI0126_ExamenFinal_B70866.Models
         public string fileType { get; set; }
 
         public int amount { get; set; }
+
+        public double appliedDiscount { get; set; }
     }
 }

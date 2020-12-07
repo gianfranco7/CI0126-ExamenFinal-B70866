@@ -48,7 +48,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return RedirectToAction("shoppingCart");
         }
 
-        public double getTotalPrice()
+        public double getSubTotalPrice()
         {
             double totalPrice = 0;
             ProductHandler productHandler = new ProductHandler();
@@ -61,64 +61,73 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return totalPrice;
         }
 
-        public List<int> getOrderedDistinctIDs(List<Product>products) 
-        {
-            List<int> productIDs = new List<int>();
-            foreach (var product in products) 
-            {
-                if (!productIDs.Exists(id => id == product.id))
-                {
-                    productIDs.Add(product.id);
-                }
-            }
-            productIDs.OrderBy(id => id);
-            return productIDs;
-        }
-
-        public int[] getAmountOfProductsInCart(List<Product> products) 
-        {
-            List<int> productIDs = getOrderedDistinctIDs(products);
-            int arraySize = productIDs.Last();
-            int[] amountsArray = new int[arraySize+2];
-            foreach (var id in productIDs)
-            {
-                foreach (var product in products) 
-                {
-                    if (id+1 == product.id) 
-                    {
-                        amountsArray[id+1] += product.amount;
-                    }
-                }           
-            }
-            return amountsArray;
-        }
-
-        public double[] getDiscounts(int[] amountsArray) 
+        public List<Product> getPackageDiscounts(List<Product> products) 
         {
             ProductHandler productHandler = new ProductHandler();
-            double[] discountsArray = new double[amountsArray.Length];
-            for (int i = 1; i < amountsArray.Length; i++)
+            foreach (var product in products) 
             {
-                if (amountsArray[i] != 0) 
+                if (product.amount == productHandler.getProductDiscountAmount(product.id))
                 {
-                    double discount = productHandler.getProductDiscount(i);
-                    int discountAmount = productHandler.getProductDiscountAmount(i);
-                    int amountOfDiscounts = amountsArray[i] % discountAmount;
-                    discountsArray[i] = amountOfDiscounts * discount;
+                    product.appliedDiscount = productHandler.getProductDiscount(product.id);
                 }
             }
-            return discountsArray;
+            return products;
         }
 
-        [HandleError]
+        public List<Product> getProductNames(List<Product> products) 
+        {
+            ProductHandler productHandler = new ProductHandler();
+            foreach (var product in products) 
+            {
+                product.name = productHandler.getProductName(product.id);   
+            }
+            return products;
+        }
+
+        public List<Product> getProductPrices(List<Product> products) 
+        {
+            ProductHandler productHandler = new ProductHandler();
+            foreach (var product in products)
+            {
+                product.price = productHandler.getProductPrice(product.id);
+            }
+            return products;
+        }
+
+        public double getTotalDiscount(List<Product> products) 
+        {
+            double totalDiscount = 0;
+            foreach (var product in products) 
+            {
+                totalDiscount += product.appliedDiscount;
+            }
+            return totalDiscount;
+        }
+
+        public double getTotalPrice(double subTotal, double discount) 
+        {
+            return subTotal - discount;
+        }
+
+        public List<Product> getProductsData(List<Product> products) 
+        {
+            products = getProductNames(products);
+            products = getProductPrices(products);
+            products = getPackageDiscounts(products);
+            return products;
+        }
+
         public ActionResult shoppingCart()
         {
             ProductHandler productHandler = new ProductHandler();
             List<Product> productsInCart = productHandler.getAllProductsInCart().ToList();
-            int[] amountOfProductsInCart = getAmountOfProductsInCart(productsInCart);
+            double subTotal = getSubTotalPrice();
+            productsInCart = getProductsData(productsInCart);
+            double discount = getTotalDiscount(productsInCart);
             ViewBag.productsInCart = productsInCart;
-            ViewBag.productDiscounts = getDiscounts(amountOfProductsInCart);
-            ViewBag.totalPrice = getTotalPrice();
+            ViewBag.subTotalPrice = subTotal;
+            ViewBag.totalDiscount = discount;
+            ViewBag.totalPrice = getTotalPrice(subTotal, discount);
             return View();
         }
 
