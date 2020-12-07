@@ -40,11 +40,10 @@ namespace CI0126_ExamenFinal_B70866.Tests.Controllers
         public void fileAccessTest()
         {
             // Arrange
-            Product testProduct = new Product();
             ProductController controller = new ProductController();
 
             // Act
-            ActionResult result = controller.addProduct(testProduct);
+            ActionResult result = controller.fileAccess(3);
 
             // Assert
             Assert.IsNotNull(result);
