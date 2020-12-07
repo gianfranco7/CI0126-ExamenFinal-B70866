@@ -22,6 +22,19 @@ namespace CI0126_ExamenFinal_B70866.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-        
+        [TestMethod]
+        public void addProductTest()
+        {
+            // Arrange
+            Product testProduct = new Product();
+            testProduct.id = 0;
+            ProductController controller = new ProductController();
+
+            // Act
+            ActionResult result = controller.addProduct(testProduct);
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
     }
 }
