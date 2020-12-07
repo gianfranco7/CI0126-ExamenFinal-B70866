@@ -1,0 +1,14 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+namespace CI0126_ExamenFinal_B70866.Tests.UITesting
+{
+    [TestClass]
+    public class UnitTest1
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+        }
+    }
+}
