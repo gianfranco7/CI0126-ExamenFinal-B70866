@@ -48,7 +48,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return RedirectToAction("shoppingCart");
         }
 
-        public double getTotalPrice()
+        public double getSubTotalPrice()
         {
             double totalPrice = 0;
             ProductHandler productHandler = new ProductHandler();
@@ -147,12 +147,16 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             List<Product> productsInCart = productHandler.getAllProductsInCart().ToList();
             int[] amountsOfProductsInCart = getAmountsOfProductsInCart(productsInCart);
             double[] discounts = getDiscounts(amountsOfProductsInCart);
+            double discount = getTotalDiscount(discounts);
+            double subTotal = getSubTotalPrice();
+            double totalPrice = subTotal - discount;
             productsInCart = getProductNames(productsInCart);
             productsInCart = getProductPrices(productsInCart);
             ViewBag.productsInCart = productsInCart;
             ViewBag.productDiscounts = discounts;
-            ViewBag.totalPrice = getTotalPrice();
-            ViewBag.totalDiscount = getTotalDiscount(discounts);
+            ViewBag.subTotalPrice = subTotal;
+            ViewBag.totalDiscount = discount;
+            ViewBag.totalPrice = totalPrice;
             return View();
         }
 
