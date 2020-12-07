@@ -93,11 +93,24 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return amountsArray;
         }
 
+        public List<Product> getPackageDiscounts(List<Product> products) 
+        {
+            ProductHandler productHandler = new ProductHandler();
+            foreach (var product in products) 
+            {
+                if (product.amount == productHandler.getProductDiscountAmount(product.id))
+                {
+                    product.appliedDiscount = productHandler.getProductDiscount(product.id);
+                }
+            }
+            return products;
+        }
+
         public double[] getDiscounts(int[] amountsArray) 
         {
             ProductHandler productHandler = new ProductHandler();
             double[] discountsArray = new double[amountsArray.Length+1];
-            for (int i = 1; i < amountsArray.Length; i++)
+            for (int i = 0; i < amountsArray.Length; i++)
             {
                 if (amountsArray[i] != 0) 
                 {
@@ -130,12 +143,12 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return products;
         }
 
-        public double getTotalDiscount(double[] discounts) 
+        public double getTotalDiscount(List<Product> products) 
         {
             double totalDiscount = 0;
-            foreach (var discount in discounts) 
+            foreach (var product in products) 
             {
-                totalDiscount += discount;
+                totalDiscount += product.appliedDiscount;
             }
             return totalDiscount;
         }
@@ -149,6 +162,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         {
             products = getProductNames(products);
             products = getProductPrices(products);
+            products = getPackageDiscounts(products);
             return products;
         }
 
@@ -156,13 +170,10 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         {
             ProductHandler productHandler = new ProductHandler();
             List<Product> productsInCart = productHandler.getAllProductsInCart().ToList();
-            int[] amountsOfProductsInCart = getAmountsOfProductsInCart(productsInCart);
-            double[] discounts = getDiscounts(amountsOfProductsInCart);
-            double discount = getTotalDiscount(discounts);
             double subTotal = getSubTotalPrice();
             productsInCart = getProductsData(productsInCart);
+            double discount = getTotalDiscount(productsInCart);
             ViewBag.productsInCart = productsInCart;
-            ViewBag.productDiscounts = discounts;
             ViewBag.subTotalPrice = subTotal;
             ViewBag.totalDiscount = discount;
             ViewBag.totalPrice = getTotalPrice(subTotal, discount);
