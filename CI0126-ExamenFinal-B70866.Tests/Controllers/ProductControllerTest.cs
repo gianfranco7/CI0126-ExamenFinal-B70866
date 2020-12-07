@@ -67,10 +67,14 @@ namespace CI0126_ExamenFinal_B70866.Tests.Controllers
         {
             // Arrange
             Product testProduct = new Product();
+            testProduct.discount = 1;
+            testProduct.discountAmount = 1;
+            testProduct.amount = 1;
+            List<Product> testProducts = new List<Product>();
             ProductController controller = new ProductController();
 
             // Act
-            ActionResult result = controller.addProduct(testProduct);
+            List<Product> result = controller.getPackageDiscounts(testProducts);
 
             // Assert
             Assert.IsNotNull(result);
