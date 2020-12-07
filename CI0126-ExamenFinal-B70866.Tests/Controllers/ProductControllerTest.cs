@@ -27,7 +27,48 @@ namespace CI0126_ExamenFinal_B70866.Tests.Controllers
         {
             // Arrange
             Product testProduct = new Product();
-            testProduct.id = 0;
+            ProductController controller = new ProductController();
+
+            // Act
+            ActionResult result = controller.addProduct(testProduct);
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void fileAccessTest()
+        {
+            // Arrange
+            Product testProduct = new Product();
+            ProductController controller = new ProductController();
+
+            // Act
+            ActionResult result = controller.addProduct(testProduct);
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void addProductToCartTest()
+        {
+            // Arrange
+            Product testProduct = new Product();
+            ProductController controller = new ProductController();
+
+            // Act
+            ActionResult result = controller.addProduct(testProduct);
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void getPackageDiscountsTest()
+        {
+            // Arrange
+            Product testProduct = new Product();
             ProductController controller = new ProductController();
 
             // Act
