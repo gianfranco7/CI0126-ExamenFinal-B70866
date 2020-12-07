@@ -40,6 +40,7 @@
     <h3> Subtotal: @ViewBag.subTotalPrice colones </h3>
     <h3> Total con descuento aplicado: @ViewBag.subTotalPrice-@ViewBag.totalDiscount = @ViewBag.totalPrice colones</h3>
     @Html.ActionLink("Proceder a Checkout", "buyProducts", "Product", new { @class = "btn btn-info btn-lg" })
+    @Html.ActionLink("Volver a Lista de Productos", "productList", "Product", new { @class = "btn btn-info btn-lg" })
 </body>
 </html>
 

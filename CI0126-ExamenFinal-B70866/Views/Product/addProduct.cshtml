@@ -51,7 +51,7 @@
                     @Html.TextBoxFor(model => model.image, new { type = "file", @class = "btn btn-lg", @value = "Ingrese la imagen para el producto" })
                     @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
                 </div>
-                <input type="submit" class="btn btn-lg bg-info" value="Añadir Producto" />
+                <input type="submit" class="btn btn-lg bg-info text-light" value="Añadir Producto" />
             </div>
         </form>
     }

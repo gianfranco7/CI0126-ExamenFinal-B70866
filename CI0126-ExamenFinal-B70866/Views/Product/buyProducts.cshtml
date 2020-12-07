@@ -26,7 +26,10 @@
                 @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
             </div>
             <br />
-            <input type="submit" class="btn btn-lg btn-info" value="Comprar Productos" onclick="printMessage()"/>
+            <div class="row">
+                <div class="col-6"><input type="submit" class="btn btn-lg btn-info" value="Comprar Productos" onclick="printMessage()" /></div>
+                <div class="col-6">@Html.ActionLink("Volver al Carrito de Compras", "shoppingCart", "Product", new { @class = "btn btn-info btn-lg" })</div>               
+            </div>
         </div>
     }
 </body>
