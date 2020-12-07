@@ -7,10 +7,10 @@
     @using (Html.BeginForm("buyProducts", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
-        if (ViewBag.errorMsg != null)
+        if (ViewBag.Message != null)
         {
-            <div class="alert-danger">
-                <h5> @ViewBag.errorMsg </h5>
+            <div class="alert-success">
+                <h5> @ViewBag.Message </h5>
             </div>
         }
         <br />
