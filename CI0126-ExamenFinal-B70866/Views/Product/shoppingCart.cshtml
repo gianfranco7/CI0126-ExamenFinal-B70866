@@ -18,20 +18,28 @@
         Mi Carrito de Compras
     </h2>
     <br />
-    @{
-        foreach (var product in ViewBag.productsInCart)
-        {
-            <div class="card">
-                    <p class="card-text">Nombre del Producto: @product.name</p>
-                    <p class="card-text">Cantidad en el carrito: @product.amount</p>
-            </div>
-            <br />
+    <div class="row">
+        @{
+            foreach (var product in ViewBag.productsInCart)
+            {
+                <div class="col-sm-4 container">
+                    <div class="card" style="width:400px">
+                        <img src=@Url.Action("fileAccess", "Product", new { productID = product.id }) style="width:300px;height:300px;" />
+                        <div class="card-body">
+                            <h4 class="card-title">@product.name</h4>
+                            <p class="card-text"> @product.amount unidades</p>
+                            <p class="card-text">Precio: @product.price colones</p>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            }
+            for (int i = 0; i < ViewBag.productDiscounts.Length; i++)
+            {
+                <div class="btn-outline-success">Descuento aplicado al producto @i : @ViewBag.productDiscounts[i]   </div>
+            }
         }
-        for (int i = 0; i < ViewBag.productDiscounts.Length; i++)
-        {
-            <div class="btn-outline-success">Descuento aplicado al producto @i : @ViewBag.productDiscounts[i]   </div>
-        }
-    }
+    </div>
     <div>Precio a pagar: @ViewBag.totalPrice </div>
     @Html.ActionLink("Proceder a Checkout", "buyProducts", "Product", new { @class = "btn btn-info btn-lg" })
 </body>
