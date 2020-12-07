@@ -14,24 +14,69 @@ namespace CI0126_ExamenFinal_B70866.Tests.Controllers
         {
             // Arrange
             ProductController controller = new ProductController();
-
             // Act
             ViewResult result = controller.buyProducts() as ViewResult;
-
             // Assert
             Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void getOrderedDistinctIDsTest()
+        public void addProductTest()
         {
             // Arrange
-            List<Product> testProductList = new List<Product>();
+            Product testProduct = new Product();
             ProductController controller = new ProductController();
-
             // Act
-            List<int>result = controller.getOrderedDistinctIDs(testProductList);
+            ActionResult result = controller.addProduct(testProduct);
+            // Assert
+            Assert.IsNotNull(result);
+        }
 
+        [TestMethod]
+        public void fileAccessTest()
+        {
+            // Arrange
+            ProductController controller = new ProductController();
+            // Act
+            ActionResult result = controller.fileAccess(3);
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void addProductToCartTest()
+        {
+            // Arrange
+            ProductController controller = new ProductController();
+            // Act
+            ActionResult result = controller.addProductToCart(5,5);
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void getPackageDiscountsTest()
+        {
+            // Arrange
+            Product testProduct = new Product();
+            testProduct.discount = 1;
+            testProduct.discountAmount = 1;
+            testProduct.amount = 1;
+            List<Product> testProducts = new List<Product>();
+            ProductController controller = new ProductController();
+            // Act
+            List<Product> result = controller.getPackageDiscounts(testProducts);
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void shoppingCartTest()
+        {
+            // Arrange
+            ProductController controller = new ProductController();
+            // Act
+            ActionResult result = controller.shoppingCart();
             // Assert
             Assert.IsNotNull(result);
         }
