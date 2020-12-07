@@ -30,7 +30,6 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             catch {
                 ViewBag.message = "No se logró añadir el producto por alguna razón";
             }
-            
             return View();
         }
 
@@ -146,6 +145,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
 
         public ActionResult buyProducts() 
         {
+            ViewBag.Message = "Sus productos serán enviados a su domicilio en un momento";
             return View();
         }
     }
