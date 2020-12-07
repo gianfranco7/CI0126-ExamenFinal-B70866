@@ -22,18 +22,6 @@ namespace CI0126_ExamenFinal_B70866.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
-        public void getOrderedDistinctIDsTest()
-        {
-            // Arrange
-            List<Product> testProductList = new List<Product>();
-            ProductController controller = new ProductController();
-
-            // Act
-            List<int>result = controller.getOrderedDistinctIDs(testProductList);
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
+        
     }
 }
