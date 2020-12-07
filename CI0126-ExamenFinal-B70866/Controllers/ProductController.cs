@@ -61,38 +61,6 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return totalPrice;
         }
 
-        public List<int> getOrderedDistinctIDs(List<Product>products) 
-        {
-            List<int> productIDs = new List<int>();
-            foreach (var product in products) 
-            {
-                if (!productIDs.Exists(id => id == product.id))
-                {
-                    productIDs.Add(product.id);
-                }
-            }
-            productIDs.Sort();
-            return productIDs;
-        }
-
-        public int[] getAmountsOfProductsInCart(List<Product> products) 
-        {
-            List<int> productIDs = getOrderedDistinctIDs(products);
-            int arraySize = productIDs.Last();
-            int[] amountsArray = new int[arraySize+1];
-            foreach (var id in productIDs)
-            {
-                foreach (var product in products) 
-                {
-                    if (id == product.id) 
-                    {
-                        amountsArray[id] += product.amount;
-                    }
-                }           
-            }
-            return amountsArray;
-        }
-
         public List<Product> getPackageDiscounts(List<Product> products) 
         {
             ProductHandler productHandler = new ProductHandler();
@@ -104,23 +72,6 @@ namespace CI0126_ExamenFinal_B70866.Controllers
                 }
             }
             return products;
-        }
-
-        public double[] getDiscounts(int[] amountsArray) 
-        {
-            ProductHandler productHandler = new ProductHandler();
-            double[] discountsArray = new double[amountsArray.Length+1];
-            for (int i = 0; i < amountsArray.Length; i++)
-            {
-                if (amountsArray[i] != 0) 
-                {
-                    double discount = productHandler.getProductDiscount(i);
-                    int discountAmount = productHandler.getProductDiscountAmount(i);
-                    int amountOfDiscounts = amountsArray[i] % discountAmount;
-                    discountsArray[i] = amountOfDiscounts * discount;
-                }
-            }
-            return discountsArray;
         }
 
         public List<Product> getProductNames(List<Product> products) 
