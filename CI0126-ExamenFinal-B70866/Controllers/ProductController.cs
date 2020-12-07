@@ -137,6 +137,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             List<Product> productsInCart = productHandler.getAllProductsInCart().ToList();
             int[] amountOfProductsInCart = getAmountOfProductsInCart(productsInCart);
             productsInCart = getProductNames(productsInCart);
+            productsInCart = getProductPrices(productsInCart);
             ViewBag.productsInCart = productsInCart;
             ViewBag.productDiscounts = getDiscounts(amountOfProductsInCart);
             ViewBag.totalPrice = getTotalPrice();
