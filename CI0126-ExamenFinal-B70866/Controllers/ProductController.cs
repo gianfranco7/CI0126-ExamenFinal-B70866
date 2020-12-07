@@ -79,7 +79,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         {
             List<int> productIDs = getOrderedDistinctIDs(products);
             int arraySize = productIDs.Last();
-            int[] amountsArray = new int[arraySize+2];
+            int[] amountsArray = new int[arraySize+10];
             foreach (var id in productIDs)
             {
                 foreach (var product in products) 
@@ -96,7 +96,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         public double[] getDiscounts(int[] amountsArray) 
         {
             ProductHandler productHandler = new ProductHandler();
-            double[] discountsArray = new double[amountsArray.Length];
+            double[] discountsArray = new double[amountsArray.Length+1];
             for (int i = 1; i < amountsArray.Length; i++)
             {
                 if (amountsArray[i] != 0) 
@@ -140,7 +140,18 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return totalDiscount;
         }
 
-        [HandleError]
+        public double getTotalPrice(double subTotal, double discount) 
+        {
+            return subTotal - discount;
+        }
+
+        public List<Product> getProductsData(List<Product> products) 
+        {
+            products = getProductNames(products);
+            products = getProductPrices(products);
+            return products;
+        }
+
         public ActionResult shoppingCart()
         {
             ProductHandler productHandler = new ProductHandler();
@@ -149,14 +160,12 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             double[] discounts = getDiscounts(amountsOfProductsInCart);
             double discount = getTotalDiscount(discounts);
             double subTotal = getSubTotalPrice();
-            double totalPrice = subTotal - discount;
-            productsInCart = getProductNames(productsInCart);
-            productsInCart = getProductPrices(productsInCart);
+            productsInCart = getProductsData(productsInCart);
             ViewBag.productsInCart = productsInCart;
             ViewBag.productDiscounts = discounts;
             ViewBag.subTotalPrice = subTotal;
             ViewBag.totalDiscount = discount;
-            ViewBag.totalPrice = totalPrice;
+            ViewBag.totalPrice = getTotalPrice(subTotal, discount);
             return View();
         }
 
