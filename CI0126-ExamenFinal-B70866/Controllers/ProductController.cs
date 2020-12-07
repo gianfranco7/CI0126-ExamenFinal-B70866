@@ -145,7 +145,6 @@ namespace CI0126_ExamenFinal_B70866.Controllers
 
         public ActionResult buyProducts() 
         {
-            ViewBag.Message = "Sus productos serán enviados a su domicilio en un momento";
             return View();
         }
     }
