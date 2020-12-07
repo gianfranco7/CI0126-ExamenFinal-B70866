@@ -75,7 +75,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return productIDs;
         }
 
-        public int[] getAmountOfProductsInCart(List<Product> products) 
+        public int[] getAmountsOfProductsInCart(List<Product> products) 
         {
             List<int> productIDs = getOrderedDistinctIDs(products);
             int arraySize = productIDs.Last();
@@ -130,17 +130,29 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             return products;
         }
 
+        public double getTotalDiscount(double[] discounts) 
+        {
+            double totalDiscount = 0;
+            foreach (var discount in discounts) 
+            {
+                totalDiscount += discount;
+            }
+            return totalDiscount;
+        }
+
         [HandleError]
         public ActionResult shoppingCart()
         {
             ProductHandler productHandler = new ProductHandler();
             List<Product> productsInCart = productHandler.getAllProductsInCart().ToList();
-            int[] amountOfProductsInCart = getAmountOfProductsInCart(productsInCart);
+            int[] amountsOfProductsInCart = getAmountsOfProductsInCart(productsInCart);
+            double[] discounts = getDiscounts(amountsOfProductsInCart);
             productsInCart = getProductNames(productsInCart);
             productsInCart = getProductPrices(productsInCart);
             ViewBag.productsInCart = productsInCart;
-            ViewBag.productDiscounts = getDiscounts(amountOfProductsInCart);
+            ViewBag.productDiscounts = discounts;
             ViewBag.totalPrice = getTotalPrice();
+            ViewBag.totalDiscount = getTotalDiscount(discounts);
             return View();
         }
 
