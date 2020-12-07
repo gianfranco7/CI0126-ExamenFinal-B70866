@@ -104,8 +104,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="UITesting\CPAddNullProductToCartTest.cs" />
-    <Compile Include="UITesting\UnitTest1.cs" />
-    <Compile Include="UITesting\UnitTest2.cs" />
+    <Compile Include="UITesting\CPBulkBuyAndCheckoutTest.cs" />
+    <Compile Include="UITesting\CPAddToCartTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
