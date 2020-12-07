@@ -7,43 +7,52 @@
     @using (Html.BeginForm("addProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
-        if (ViewBag.errorMsg != null)
+        if (ViewBag.Message != null)
         {
-            <div class="alert-danger">
-                <h5> @ViewBag.errorMsg </h5>
-            </div>
+            if (ViewBag.success)
+            {
+                <div class="alert-success">
+                    <h3> @ViewBag.Message </h3>
+                </div>
+            }
+            else
+            {
+                <div class="alert-danger">
+                    <h3> @ViewBag.Message </h3>
+                </div>
+            }
         }
         <br />
         <h2 class="text-center"> Añadir Producto</h2>
         <br />
         <form>
-        <div class="form-horizontal">
-        <div class="input-group-lg">
-            @Html.TextBoxFor(model => model.name, new { @class = "form-control", @placeholder = "Nombre del Producto" })
-            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-        </div>
-        <div class="input-group-lg">
-            @Html.TextBoxFor(model => model.description, new { @class = "form-control", @placeholder = "Decripción del Producto" })
-            @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-        </div>
-        <div class="input-group-lg">
-            @Html.TextBoxFor(model => model.discountAmount, new { @class = "form-control", @placeholder = "Cantidad para descuento" })
-            @Html.ValidationMessageFor(model => model.discountAmount, "", new { @class = "text-danger" })
-        </div>
-        <div class="input-group-lg">
-        @Html.TextBoxFor(model => model.price, new { @class = "form-control", @placeholder = "Precio del Producto" })
-        @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
-        </div>
-        <div class="input-group-lg">
-            @Html.TextBoxFor(model => model.discount, new { @class = "form-control", @placeholder = "Descuento del Producto" })
-            @Html.ValidationMessageFor(model => model.discount, "", new { @class = "text-danger" })
-        </div>
-        <div class="input-group-lg">
-            @Html.TextBoxFor(model => model.image, new { type = "file", @class = "btn btn-lg", @value = "Ingrese la imagen para el producto" })
-            @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
-        </div>
-        <input type="submit" class="btn btn-lg bg-info" value="Añadir Producto" />
-        </div>
+            <div class="form-horizontal">
+                <div class="input-group-lg">
+                    @Html.TextBoxFor(model => model.name, new { @class = "form-control", @placeholder = "Nombre del Producto" })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-group-lg">
+                    @Html.TextBoxFor(model => model.description, new { @class = "form-control", @placeholder = "Decripción del Producto" })
+                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-group-lg">
+                    @Html.TextBoxFor(model => model.discountAmount, new { @class = "form-control", @placeholder = "Cantidad para descuento" })
+                    @Html.ValidationMessageFor(model => model.discountAmount, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-group-lg">
+                    @Html.TextBoxFor(model => model.price, new { @class = "form-control", @placeholder = "Precio del Producto" })
+                    @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-group-lg">
+                    @Html.TextBoxFor(model => model.discount, new { @class = "form-control", @placeholder = "Descuento del Producto" })
+                    @Html.ValidationMessageFor(model => model.discount, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-group-lg">
+                    @Html.TextBoxFor(model => model.image, new { type = "file", @class = "btn btn-lg", @value = "Ingrese la imagen para el producto" })
+                    @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+                </div>
+                <input type="submit" class="btn btn-lg bg-info" value="Añadir Producto" />
+            </div>
         </form>
     }
 </body>
