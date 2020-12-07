@@ -125,7 +125,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
             ProductHandler productHandler = new ProductHandler();
             foreach (var product in products)
             {
-                product.name = productHandler.getProductPrice(product.id);
+                product.price = productHandler.getProductPrice(product.id);
             }
             return products;
         }
