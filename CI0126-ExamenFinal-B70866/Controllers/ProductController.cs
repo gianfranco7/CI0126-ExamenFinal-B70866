@@ -71,7 +71,7 @@ namespace CI0126_ExamenFinal_B70866.Controllers
                     productIDs.Add(product.id);
                 }
             }
-            productIDs.OrderBy(id => id);
+            productIDs.Sort();
             return productIDs;
         }
 
@@ -79,14 +79,14 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         {
             List<int> productIDs = getOrderedDistinctIDs(products);
             int arraySize = productIDs.Last();
-            int[] amountsArray = new int[arraySize+10];
+            int[] amountsArray = new int[arraySize+1];
             foreach (var id in productIDs)
             {
                 foreach (var product in products) 
                 {
-                    if (id+1 == product.id) 
+                    if (id == product.id) 
                     {
-                        amountsArray[id+1] += product.amount;
+                        amountsArray[id] += product.amount;
                     }
                 }           
             }
