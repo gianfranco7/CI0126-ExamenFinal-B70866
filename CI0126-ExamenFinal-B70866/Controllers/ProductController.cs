@@ -17,7 +17,20 @@ namespace CI0126_ExamenFinal_B70866.Controllers
         public ActionResult addProduct(Product product)
         {
             ProductHandler handler = new ProductHandler();
-            handler.addProduct(product);
+            ViewBag.success = false;
+            try
+            {
+                handler.addProduct(product);
+                ViewBag.success = true;
+                if (ViewBag.success)
+                {
+                    ViewBag.message = "El producto fue agregado satisfactoriamente";
+                }
+            }
+            catch {
+                ViewBag.message = "No se logró añadir el producto por alguna razón";
+            }
+            
             return View();
         }
 
